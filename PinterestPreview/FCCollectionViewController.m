@@ -8,9 +8,14 @@
 
 #import "FCCollectionViewController.h"
 #import "FCPinterestLayoutAttributes.h"
+#import "FCPinterestLayout.h"
+#import "FCJSonRequest.h"
+#import "FCImage.h"
+#import "FCCollectionViewCell.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface FCCollectionViewController ()
-
+@property (nonatomic) NSArray *recipeImages;
 @end
 
 @implementation FCCollectionViewController
@@ -25,17 +30,26 @@ static NSString * const reuseIdentifier = @"Cell";
     // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-    // todo Set the PinterestLayout delegate
-    //self.collectionViewLayout = pinterestCollectionView;
+    // Set the PinterestLayout delegate
     
-    /*
-     collectionView!.backgroundColor = UIColor.clearColor()
-     collectionView!.contentInset = UIEdgeInsets(top: 23, left: 5, bottom: 10, right: 5)\
-     */
+    FCPinterestLayout* layout = (FCPinterestLayout* ) self.collectionViewLayout;
+    layout.layoutDelegate = self;
+
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(23, 5, 10, 5);
     
-
+    // Do any additional setup after loading the view, typically from a nib.
+    FCJSonRequest* req = [[FCJSonRequest alloc] init];
+    [req configure];
+    //RecipeCollectionViewController* weakSelf = self;
+    [req loadItemsAtPath:FEATURED_ITEMS_PATH
+               OnSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                   self.recipeImages = mappingResult.array;
+                   [self.collectionView reloadData];
+               }
+               OnFailure:^(RKObjectRequestOperation *operation, NSError *error) {
+                   NSLog(@"Error getting pictures");
+               }];
 }
 
 /*
@@ -51,20 +65,24 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    // the only collection
+    return 1;
 }
 
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+    return [self.recipeImages count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    FCCollectionViewCell *cell = (FCCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
+    UIImageView *recipeImageView = cell.imageView;
+    FCImage* viewingElement = self.recipeImages[indexPath.row];
+    NSURL* url = [[NSURL alloc] initWithString:viewingElement.url];
+    
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
+    recipeImageView.image = [[UIImage alloc] initWithData:imageData];
     
     return cell;
 }
@@ -81,7 +99,20 @@ static NSString * const reuseIdentifier = @"Cell";
      let rect  = AVMakeRectWithAspectRatioInsideRect(photo.image.size, boundingRect)
      return rect.size.height
      */
-    return 1;
+    
+    FCCollectionViewCell *cell = (FCCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell
+    UIImageView *recipeImageView = cell.imageView;
+    if (recipeImageView) {
+        if (recipeImageView.image) {
+            CGRect boundingRect= CGRectMake(0, 0, width, MAXFLOAT);
+            CGRect rect = AVMakeRectWithAspectRatioInsideRect(recipeImageView.image.size, boundingRect);
+            return rect.size.height;
+        }
+    }
+    
+    return 100;
 }
 #pragma mark <UICollectionViewDelegate>
 

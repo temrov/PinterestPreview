@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B8B95DF6E4E84F91ECD4F51 /* libPods-PinterestPreview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34242286D99AE07C46016FA7 /* libPods-PinterestPreview.a */; };
 		59A6C4D91D8E4AD20085CF61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C4D81D8E4AD20085CF61 /* main.m */; };
 		59A6C4DC1D8E4AD20085CF61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C4DB1D8E4AD20085CF61 /* AppDelegate.m */; };
 		59A6C4E21D8E4AD20085CF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A6C4E01D8E4AD20085CF61 /* Main.storyboard */; };
@@ -16,9 +17,13 @@
 		59A6C4F51D8E600E0085CF61 /* FCPinterestLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C4F41D8E600E0085CF61 /* FCPinterestLayout.m */; };
 		59A6C4F91D8E66EE0085CF61 /* FCPinterestLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C4F81D8E66EE0085CF61 /* FCPinterestLayoutAttributes.m */; };
 		59A6C4FD1D8EB2420085CF61 /* FCCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C4FC1D8EB2420085CF61 /* FCCollectionViewCell.m */; };
+		59A6C5031D8F07490085CF61 /* FCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C5001D8F07490085CF61 /* FCImage.m */; };
+		59A6C5041D8F07490085CF61 /* FCJSonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C5021D8F07490085CF61 /* FCJSonRequest.m */; };
+		59A6C5071D8F075F0085CF61 /* FCVisualItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C5061D8F075F0085CF61 /* FCVisualItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34242286D99AE07C46016FA7 /* libPods-PinterestPreview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinterestPreview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A6C4D41D8E4AD20085CF61 /* PinterestPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinterestPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A6C4D81D8E4AD20085CF61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		59A6C4DA1D8E4AD20085CF61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -36,6 +41,14 @@
 		59A6C4F81D8E66EE0085CF61 /* FCPinterestLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCPinterestLayoutAttributes.m; sourceTree = "<group>"; };
 		59A6C4FB1D8EB2420085CF61 /* FCCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCollectionViewCell.h; sourceTree = "<group>"; };
 		59A6C4FC1D8EB2420085CF61 /* FCCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCollectionViewCell.m; sourceTree = "<group>"; };
+		59A6C4FF1D8F07490085CF61 /* FCImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCImage.h; sourceTree = "<group>"; };
+		59A6C5001D8F07490085CF61 /* FCImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCImage.m; sourceTree = "<group>"; };
+		59A6C5011D8F07490085CF61 /* FCJSonRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCJSonRequest.h; sourceTree = "<group>"; };
+		59A6C5021D8F07490085CF61 /* FCJSonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCJSonRequest.m; sourceTree = "<group>"; };
+		59A6C5051D8F075F0085CF61 /* FCVisualItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCVisualItem.h; sourceTree = "<group>"; };
+		59A6C5061D8F075F0085CF61 /* FCVisualItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCVisualItem.m; sourceTree = "<group>"; };
+		83A5744E13B4375F1C22D837 /* Pods-PinterestPreview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinterestPreview.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinterestPreview/Pods-PinterestPreview.release.xcconfig"; sourceTree = "<group>"; };
+		F43C69D3399E91837F273EE3 /* Pods-PinterestPreview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinterestPreview.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinterestPreview/Pods-PinterestPreview.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B8B95DF6E4E84F91ECD4F51 /* libPods-PinterestPreview.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +68,8 @@
 			children = (
 				59A6C4D61D8E4AD20085CF61 /* PinterestPreview */,
 				59A6C4D51D8E4AD20085CF61 /* Products */,
+				5BFB3AE3CC2B2086506AA6A6 /* Pods */,
+				698363EACB3968C31219F3CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +84,7 @@
 		59A6C4D61D8E4AD20085CF61 /* PinterestPreview */ = {
 			isa = PBXGroup;
 			children = (
+				59A6C4FE1D8F05D90085CF61 /* Model */,
 				59A6C4FA1D8EB1E70085CF61 /* View */,
 				59A6C4F21D8E5FC70085CF61 /* Layout */,
 				59A6C4EE1D8E4B8D0085CF61 /* Controllers */,
@@ -120,6 +137,36 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		59A6C4FE1D8F05D90085CF61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59A6C5051D8F075F0085CF61 /* FCVisualItem.h */,
+				59A6C5061D8F075F0085CF61 /* FCVisualItem.m */,
+				59A6C4FF1D8F07490085CF61 /* FCImage.h */,
+				59A6C5001D8F07490085CF61 /* FCImage.m */,
+				59A6C5011D8F07490085CF61 /* FCJSonRequest.h */,
+				59A6C5021D8F07490085CF61 /* FCJSonRequest.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5BFB3AE3CC2B2086506AA6A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F43C69D3399E91837F273EE3 /* Pods-PinterestPreview.debug.xcconfig */,
+				83A5744E13B4375F1C22D837 /* Pods-PinterestPreview.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		698363EACB3968C31219F3CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34242286D99AE07C46016FA7 /* libPods-PinterestPreview.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,9 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59A6C4EB1D8E4AD20085CF61 /* Build configuration list for PBXNativeTarget "PinterestPreview" */;
 			buildPhases = (
+				555FC9403C6BCD027E7ED42E /* [CP] Check Pods Manifest.lock */,
 				59A6C4D01D8E4AD20085CF61 /* Sources */,
 				59A6C4D11D8E4AD20085CF61 /* Frameworks */,
 				59A6C4D21D8E4AD20085CF61 /* Resources */,
+				0A800E88FDE606CFE3C2B0FA /* [CP] Embed Pods Frameworks */,
+				031F3D5B73B4709B32D846AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,6 +235,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		031F3D5B73B4709B32D846AF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinterestPreview/Pods-PinterestPreview-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0A800E88FDE606CFE3C2B0FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinterestPreview/Pods-PinterestPreview-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		555FC9403C6BCD027E7ED42E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		59A6C4D01D8E4AD20085CF61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -195,6 +293,9 @@
 				59A6C4DC1D8E4AD20085CF61 /* AppDelegate.m in Sources */,
 				59A6C4D91D8E4AD20085CF61 /* main.m in Sources */,
 				59A6C4F51D8E600E0085CF61 /* FCPinterestLayout.m in Sources */,
+				59A6C5031D8F07490085CF61 /* FCImage.m in Sources */,
+				59A6C5071D8F075F0085CF61 /* FCVisualItem.m in Sources */,
+				59A6C5041D8F07490085CF61 /* FCJSonRequest.m in Sources */,
 				59A6C4F91D8E66EE0085CF61 /* FCPinterestLayoutAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +408,7 @@
 		};
 		59A6C4EC1D8E4AD20085CF61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F43C69D3399E91837F273EE3 /* Pods-PinterestPreview.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PinterestPreview/Info.plist;
@@ -318,6 +420,7 @@
 		};
 		59A6C4ED1D8E4AD20085CF61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83A5744E13B4375F1C22D837 /* Pods-PinterestPreview.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PinterestPreview/Info.plist;
@@ -346,6 +449,7 @@
 				59A6C4ED1D8E4AD20085CF61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

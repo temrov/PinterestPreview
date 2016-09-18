@@ -23,10 +23,23 @@
     UIEdgeInsets insets = [self.collectionView contentInset];
     return CGRectGetWidth([self.collectionView bounds]) - (insets.left + insets.right);
 }
+- (id)init
+{
+    if ([super init] != self) {
+        return nil;
+    }
+    self.numberOfColumns = 2;
+    self.cellPadding = 0.6;
+    return self;
+}
 
 - (void)prepareLayout
 {
     if (self.cashe.count == 0) {
+        [self init];
+        if (0 == [self.collectionView numberOfItemsInSection:0]) {
+            return;
+        }
         //Pre-Calculates the X Offset for every column and adds an array to increment the currently max Y Offset for each column
         CGFloat columnWidth = [self getContentWigth] / self.numberOfColumns;
         CGFloat xOffset[self.numberOfColumns];
@@ -38,14 +51,15 @@
         CGFloat yOffset[self.numberOfColumns];
         column = 0;
         
-        for(UICollectionViewCell* cell in self.collectionView)
+        for(int i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++)
         {
-            NSIndexPath* indexPath = [self.collectionView indexPathForCell:cell];
+            NSIndexPath* indexPath = [NSIndexPath indexPathForItem:i inSection:0];
             // Asks the delegate for the height of the picture and the annotation and calculates the cell frame.
            
             CGFloat width = columnWidth - self.cellPadding;
            
-            CGFloat photoHeight = [self.layoutDelegate cellHeightInCollectionView:self.collectionView AtIndexPath:indexPath WithWidth:width];
+            CGFloat photoHeight = 500 ;
+            //photoHeight = [self.layoutDelegate cellHeightInCollectionView:self.collectionView AtIndexPath:indexPath WithWidth:width];
            
             CGFloat height = self.cellPadding + photoHeight + self.cellPadding;
            
@@ -67,6 +81,7 @@
             
             column = column >= (self.numberOfColumns - 1) ? 0 : ++column;
         }
+         
     }
 }
 

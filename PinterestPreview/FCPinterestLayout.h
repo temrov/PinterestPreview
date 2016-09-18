@@ -12,6 +12,7 @@
 @interface FCPinterestLayout : UICollectionViewLayout
 
 @property (assign, nonatomic) id<FCPinterestLayoutDelegate> layoutDelegate;
+- (id) init;
 
 #warning set these values!!!
 // Configurable properties
