@@ -96,7 +96,7 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
                            AtIndexPath : (NSIndexPath*) indexPath
                               WithWidth: (CGFloat) width
 {
-    
+    /*
     FCCollectionViewCell *cell = (FCCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
@@ -108,7 +108,7 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
             return rect.size.height;
         }
     }
-    
+    */
     return 100;
 }
 
