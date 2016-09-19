@@ -23,12 +23,13 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"FCCollectionViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+   [self.collectionView registerClass:[FCCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    
     
     // Set the PinterestLayout delegate
     
@@ -76,8 +77,10 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FCCollectionViewCell *cell = (FCCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
+    
     // Configure the cell
     UIImageView *recipeImageView = cell.imageView;
+    recipeImageView = [cell viewWithTag:100];
     FCImage* viewingElement = self.recipeImages[indexPath.row];
     NSURL* url = [[NSURL alloc] initWithString:viewingElement.url];
     
@@ -93,12 +96,6 @@ static NSString * const reuseIdentifier = @"Cell";
                            AtIndexPath : (NSIndexPath*) indexPath
                               WithWidth: (CGFloat) width
 {
-    /**
-     let photo = photos[indexPath.item]
-     let boundingRect =  CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
-     let rect  = AVMakeRectWithAspectRatioInsideRect(photo.image.size, boundingRect)
-     return rect.size.height
-     */
     
     FCCollectionViewCell *cell = (FCCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
@@ -114,35 +111,5 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return 100;
 }
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

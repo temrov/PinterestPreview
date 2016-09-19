@@ -25,30 +25,37 @@
 }
 - (id)init
 {
-    if ([super init] != self) {
-        return nil;
+    static BOOL firstCall = TRUE;
+    if (firstCall) {
+        self.numberOfColumns = 2;
+        self.cellPadding = 0.6;
+        self.cashe = [[NSMutableArray alloc] initWithCapacity:10];
+        firstCall = FALSE;
     }
-    self.numberOfColumns = 2;
-    self.cellPadding = 0.6;
+    
     return self;
 }
 
 - (void)prepareLayout
 {
+    [self init];
     if (self.cashe.count == 0) {
-        [self init];
+        
         if (0 == [self.collectionView numberOfItemsInSection:0]) {
             return;
         }
         //Pre-Calculates the X Offset for every column and adds an array to increment the currently max Y Offset for each column
         CGFloat columnWidth = [self getContentWigth] / self.numberOfColumns;
-        CGFloat xOffset[self.numberOfColumns];
+        double xOffset[self.numberOfColumns];
+        double yOffset[self.numberOfColumns];
         NSInteger column;
         for( column = 0; column < self.numberOfColumns; column++ )
         {
             xOffset[column] = column * columnWidth;
+            yOffset[column] = 0;
         }
-        CGFloat yOffset[self.numberOfColumns];
+        
+        
         column = 0;
         
         for(int i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++)
@@ -59,7 +66,7 @@
             CGFloat width = columnWidth - self.cellPadding;
            
             CGFloat photoHeight = 500 ;
-            //photoHeight = [self.layoutDelegate cellHeightInCollectionView:self.collectionView AtIndexPath:indexPath WithWidth:width];
+            photoHeight = [self.layoutDelegate cellHeightInCollectionView:self.collectionView AtIndexPath:indexPath WithWidth:width];
            
             CGFloat height = self.cellPadding + photoHeight + self.cellPadding;
            
@@ -68,10 +75,11 @@
             
             // Creates an UICollectionViewLayoutItem with the frame and add it to the cache
             
-            FCPinterestLayoutAttributes* attributes = [[FCPinterestLayoutAttributes alloc] init];
-            attributes.indexPath = indexPath;
+            FCPinterestLayoutAttributes* attributes = [FCPinterestLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+            
             attributes.itemHeight = photoHeight;
             attributes.frame = insetFrame;
+    
             [self.cashe addObject:attributes];
             
             //  Updates the collection view content height
