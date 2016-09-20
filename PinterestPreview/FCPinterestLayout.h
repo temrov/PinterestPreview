@@ -14,7 +14,6 @@
 @property (assign, nonatomic) id<FCPinterestLayoutDelegate> layoutDelegate;
 - (id) init;
 
-#warning set these values!!!
 // Configurable properties
 @property(nonatomic) NSInteger numberOfColumns;
 @property(nonatomic) CGFloat cellPadding;

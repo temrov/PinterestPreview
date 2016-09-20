@@ -27,7 +27,10 @@
 {
     static BOOL firstCall = TRUE;
     if (firstCall) {
-        self.numberOfColumns = 2;
+        if (self != [super init]) {
+            return nil;
+        }
+        self.numberOfColumns = 3;
         self.cellPadding = 0.6;
         self.cashe = [[NSMutableArray alloc] initWithCapacity:10];
         firstCall = FALSE;

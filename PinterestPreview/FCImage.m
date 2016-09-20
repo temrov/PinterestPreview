@@ -7,6 +7,7 @@
 //
 
 #import "FCImage.h"
+#import "FCItemSize.h"
 
 @implementation FCImage
 
@@ -23,6 +24,9 @@
        @"type" : @"type"
        
        }];
+    RKObjectMapping* sizeMapping = [FCItemSizeMapping get];
+    [visualItemMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"size" toKeyPath:@"size" withMapping:sizeMapping]];
+
     RKDynamicMapping *mapping = [RKDynamicMapping new];
     [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"pic" objectMapping:visualItemMapping]];
     return mapping;

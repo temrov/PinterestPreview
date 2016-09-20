@@ -27,13 +27,10 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Register cell classes
-   [self.collectionView registerClass:[FCCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
     
     // Set the PinterestLayout delegate
     
-    FCPinterestLayout* layout = (FCPinterestLayout* ) self.collectionViewLayout;
+    FCPinterestLayout* layout = (FCPinterestLayout* ) self.collectionView.collectionViewLayout;
     layout.layoutDelegate = self;
 
     self.collectionView.backgroundColor = [UIColor clearColor];
@@ -96,20 +93,14 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
                            AtIndexPath : (NSIndexPath*) indexPath
                               WithWidth: (CGFloat) width
 {
-    /*
-    FCCollectionViewCell *cell = (FCCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell
-    UIImageView *recipeImageView = cell.imageView;
-    if (recipeImageView) {
-        if (recipeImageView.image) {
-            CGRect boundingRect= CGRectMake(0, 0, width, MAXFLOAT);
-            CGRect rect = AVMakeRectWithAspectRatioInsideRect(recipeImageView.image.size, boundingRect);
-            return rect.size.height;
-        }
+    if (indexPath.row >= self.recipeImages.count) {
+        NSLog(@"getting invalid image by index %d", indexPath.row);
+        return 0;
     }
-    */
-    return 100;
+    FCImage* viewingElement = self.recipeImages[indexPath.row];
+    CGRect boundingRect= CGRectMake(0, 0, width, MAXFLOAT);
+    CGRect rect = AVMakeRectWithAspectRatioInsideRect([viewingElement.size asCGSize], boundingRect);
+    return rect.size.height;
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
+#import "FCItemSize.h"
 
 /**
  * Base class of viewing object.
@@ -17,7 +18,7 @@
 
 @property (strong, nonatomic) NSString* url;
 @property (strong, nonatomic) NSString* identifier;
-@property CGSize size;
+@property (strong, nonatomic) FCItemSize* size;
 @property (strong, nonatomic) NSString* type;
 
 @end

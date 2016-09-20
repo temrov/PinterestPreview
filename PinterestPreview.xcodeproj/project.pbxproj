@@ -20,6 +20,7 @@
 		59A6C5031D8F07490085CF61 /* FCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C5001D8F07490085CF61 /* FCImage.m */; };
 		59A6C5041D8F07490085CF61 /* FCJSonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C5021D8F07490085CF61 /* FCJSonRequest.m */; };
 		59A6C5071D8F075F0085CF61 /* FCVisualItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C5061D8F075F0085CF61 /* FCVisualItem.m */; };
+		59D2A2A51D918D6D002CECBC /* FCItemSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D2A2A41D918D6D002CECBC /* FCItemSize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		59A6C5021D8F07490085CF61 /* FCJSonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCJSonRequest.m; sourceTree = "<group>"; };
 		59A6C5051D8F075F0085CF61 /* FCVisualItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCVisualItem.h; sourceTree = "<group>"; };
 		59A6C5061D8F075F0085CF61 /* FCVisualItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCVisualItem.m; sourceTree = "<group>"; };
+		59D2A2A31D918D6D002CECBC /* FCItemSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCItemSize.h; sourceTree = "<group>"; };
+		59D2A2A41D918D6D002CECBC /* FCItemSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCItemSize.m; sourceTree = "<group>"; };
 		83A5744E13B4375F1C22D837 /* Pods-PinterestPreview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinterestPreview.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinterestPreview/Pods-PinterestPreview.release.xcconfig"; sourceTree = "<group>"; };
 		F43C69D3399E91837F273EE3 /* Pods-PinterestPreview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinterestPreview.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinterestPreview/Pods-PinterestPreview.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +149,8 @@
 				59A6C5001D8F07490085CF61 /* FCImage.m */,
 				59A6C5011D8F07490085CF61 /* FCJSonRequest.h */,
 				59A6C5021D8F07490085CF61 /* FCJSonRequest.m */,
+				59D2A2A31D918D6D002CECBC /* FCItemSize.h */,
+				59D2A2A41D918D6D002CECBC /* FCItemSize.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59D2A2A51D918D6D002CECBC /* FCItemSize.m in Sources */,
 				59A6C4F11D8E4C5D0085CF61 /* FCCollectionViewController.m in Sources */,
 				59A6C4FD1D8EB2420085CF61 /* FCCollectionViewCell.m in Sources */,
 				59A6C4DC1D8E4AD20085CF61 /* AppDelegate.m in Sources */,

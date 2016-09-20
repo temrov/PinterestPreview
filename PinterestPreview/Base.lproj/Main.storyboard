@@ -22,8 +22,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T9E-Yu-V5d">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T9E-Yu-V5d">
+                                            <rect key="frame" x="8" y="8" width="164" height="120"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="ydn-3H-qb1"/>
                                             </constraints>
@@ -42,6 +42,13 @@
                                     <constraint firstItem="T9E-Yu-V5d" firstAttribute="leading" secondItem="vVh-8H-z4N" secondAttribute="leadingMargin" id="uA9-nd-Qw6"/>
                                 </constraints>
                                 <size key="customSize" width="180" height="180"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ach-A0-5GN"/>
+                                        <exclude reference="bdB-kw-SKS"/>
+                                        <exclude reference="mr7-oS-iRH"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="imageView" destination="T9E-Yu-V5d" id="Vdh-Wx-fgT"/>
                                     <outlet property="imageViewHeightLayoutConstraint" destination="ydn-3H-qb1" id="2o2-Bf-MmB"/>

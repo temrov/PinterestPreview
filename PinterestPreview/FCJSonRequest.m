@@ -8,6 +8,8 @@
 
 #import "FCJSonRequest.h"
 #import "FCImage.h"
+#import "FCItemSize.h"
+
 
 NSString* FEATURED_ITEMS_PATH = @"/ifunny/v1/feeds/featured";
 NSString* POPULAR_ITEMS_PATH = @"/ifunny/v1/feeds/popular";
@@ -21,6 +23,7 @@ NSString* POPULAR_ITEMS_PATH = @"/ifunny/v1/feeds/popular";
     
     // initialize RestKit
     RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    
     
     RKMapping* pictureMapping = [FCImageMapping get];
     // register mappings with the provider using a response descriptor
@@ -38,6 +41,8 @@ NSString* POPULAR_ITEMS_PATH = @"/ifunny/v1/feeds/popular";
                                                 keyPath:@"content.items"
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:responseDescriptorPopular];
+    
+    
     
 }
 -(void)loadItemsAtPath : (NSString*)path
