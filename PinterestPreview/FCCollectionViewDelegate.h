@@ -7,10 +7,11 @@
 //
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "FCItemProvider.h"
 
 @interface FCCollectionViewDelegate : NSObject<UICollectionViewDelegate>
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+-(id)initWithDataProvider:(FCItemProvider*) itemProvider;
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
                   willDecelerate:(BOOL)decelerate;

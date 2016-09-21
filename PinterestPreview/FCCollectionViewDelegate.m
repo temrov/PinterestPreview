@@ -7,19 +7,30 @@
 //
 
 #import "FCCollectionViewDelegate.h"
+#import "FCJSonRequest.h"
+
+
+@interface FCCollectionViewDelegate()
+@property (weak,  nonatomic) FCItemProvider* itemProvider;
+@end
 
 @implementation FCCollectionViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+-(id)initWithDataProvider:(FCItemProvider*) itemProvider
 {
-    int i =0;
-    return;
+    if (self != [super init]) {
+        return nil;
+    }
+    self.itemProvider = itemProvider;
+    return self;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
                   willDecelerate:(BOOL)decelerate
 {
-    int i =0;
-    return;
+    if (decelerate) {
+        UICollectionView* collectionView = (UICollectionView*)scrollView;
+        [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:collectionView];
+    }
 }
 @end

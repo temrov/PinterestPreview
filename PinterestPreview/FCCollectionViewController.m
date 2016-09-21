@@ -33,10 +33,6 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
     
     // Set the PinterestLayout delegate
     
-    
-    self.scrollDelegate =[[FCCollectionViewDelegate alloc] init];
-
-    self.collectionView.delegate = self.scrollDelegate;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(23, 5, 10, 5);
     
@@ -45,7 +41,9 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
     layout.layoutDelegate = self;
     layout.itemProvider = self.itemProvider;
 
-    [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
+    self.scrollDelegate =[[FCCollectionViewDelegate alloc] initWithDataProvider:self.itemProvider];
+    self.collectionView.delegate = self.scrollDelegate;
+    [self.itemProvider loadMoreItemsInTailForSelection:FEATURED_ITEMS_PATH AndNotify:self.collectionView];
 }
 
 /*
