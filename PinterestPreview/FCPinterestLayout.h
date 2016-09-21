@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "FCPinterestLayoutDelegate.h"
+#import "FCItemProvider.h"
 
 @interface FCPinterestLayout : UICollectionViewLayout
 
 @property (assign, nonatomic) id<FCPinterestLayoutDelegate> layoutDelegate;
+@property (weak, nonatomic) FCItemProvider* itemProvider;
 - (id) init;
 
 // Configurable properties

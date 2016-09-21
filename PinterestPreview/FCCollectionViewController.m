@@ -9,13 +9,16 @@
 #import "FCCollectionViewController.h"
 #import "FCPinterestLayoutAttributes.h"
 #import "FCPinterestLayout.h"
-#import "FCJSonRequest.h"
 #import "FCImage.h"
+#import "FCItemProvider.h"
+#import "FCJSonRequest.h"
 #import "FCCollectionViewCell.h"
 #import <AVFoundation/AVFoundation.h>
+#import "FCCollectionViewDelegate.h"
 
 @interface FCCollectionViewController ()
-@property (nonatomic) NSArray *recipeImages;
+@property (nonatomic) FCItemProvider *itemProvider;
+@property (nonatomic) FCCollectionViewDelegate* scrollDelegate;
 @end
 
 @implementation FCCollectionViewController
@@ -30,24 +33,19 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
     
     // Set the PinterestLayout delegate
     
-    FCPinterestLayout* layout = (FCPinterestLayout* ) self.collectionView.collectionViewLayout;
-    layout.layoutDelegate = self;
+    
+    self.scrollDelegate =[[FCCollectionViewDelegate alloc] init];
 
+    self.collectionView.delegate = self.scrollDelegate;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(23, 5, 10, 5);
     
-    // Do any additional setup after loading the view, typically from a nib.
-    FCJSonRequest* req = [[FCJSonRequest alloc] init];
-    [req configure];
-    //RecipeCollectionViewController* weakSelf = self;
-    [req loadItemsAtPath:FEATURED_ITEMS_PATH
-               OnSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                   self.recipeImages = mappingResult.array;
-                   [self.collectionView reloadData];
-               }
-               OnFailure:^(RKObjectRequestOperation *operation, NSError *error) {
-                   NSLog(@"Error getting pictures");
-               }];
+    self.itemProvider = [[FCItemProvider alloc] init];
+    FCPinterestLayout* layout = (FCPinterestLayout* ) self.collectionView.collectionViewLayout;
+    layout.layoutDelegate = self;
+    layout.itemProvider = self.itemProvider;
+
+    [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
 }
 
 /*
@@ -68,7 +66,7 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.recipeImages count];
+    return [self.itemProvider count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,8 +75,7 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
     
     // Configure the cell
     UIImageView *recipeImageView = cell.imageView;
-    recipeImageView = [cell viewWithTag:100];
-    FCImage* viewingElement = self.recipeImages[indexPath.row];
+    FCVisualItem* viewingElement = [self.itemProvider getByIndex:indexPath.row];
     NSURL* url = [[NSURL alloc] initWithString:viewingElement.url];
     
     NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
@@ -93,11 +90,11 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
                            AtIndexPath : (NSIndexPath*) indexPath
                               WithWidth: (CGFloat) width
 {
-    if (indexPath.row >= self.recipeImages.count) {
-        NSLog(@"getting invalid image by index %d", indexPath.row);
+    if (indexPath.row >= [self.itemProvider count]) {
+        NSLog(@"getting invalid image by index %ld", (long)indexPath.row);
         return 0;
     }
-    FCImage* viewingElement = self.recipeImages[indexPath.row];
+    FCVisualItem* viewingElement = [self.itemProvider getByIndex:indexPath.row];
     CGRect boundingRect= CGRectMake(0, 0, width, MAXFLOAT);
     CGRect rect = AVMakeRectWithAspectRatioInsideRect([viewingElement.size asCGSize], boundingRect);
     return rect.size.height;

@@ -12,6 +12,5 @@
 
 @interface FCCollectionViewController : UICollectionViewController <FCPinterestLayoutDelegate>
 
-@property  NSArray* visualItems;
 
 @end
