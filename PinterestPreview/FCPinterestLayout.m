@@ -23,27 +23,36 @@
     UIEdgeInsets insets = [self.collectionView contentInset];
     return CGRectGetWidth([self.collectionView bounds]) - (insets.left + insets.right);
 }
-- (id)init
+- (void)initProps
 {
     static BOOL firstCall = TRUE;
     if (firstCall) {
-        if (self != [super init]) {
-            return nil;
-        }
-        self.numberOfColumns = 2;
+        self.numberOfColumns = 4;
         self.cellPadding = 2;
-        self.cashe = [[NSMutableArray alloc] initWithCapacity:10];
+        self.cashe = [[NSMutableArray alloc] initWithCapacity:300];
         firstCall = FALSE;
     }
-    
-    return self;
+}
+- (double)getColumnBottom:(double) xOffset
+{
+    if(self.cashe.count)
+    {
+        // find from the end
+        for (int i = (int)self.cashe.count - 1; i >= 0; i--) {
+            
+            FCPinterestLayoutAttributes* attributes = [self.cashe objectAtIndex:i];
+            if (attributes.frame.origin.x == xOffset)
+            {
+                // first item that was found
+                return attributes.frame.origin.y + attributes.frame.size.height;
+            }
+        }
+    }
+    return 0;
 }
 
-- (void)prepareLayout
+- (CGPoint)getNextItemPosition
 {
-    [self init];
-   
-    //Pre-Calculates the X Offset for every column and adds an array to increment the currently max Y Offset for each column
     CGFloat columnWidth = [self getContentWigth] / self.numberOfColumns;
     double xOffset[self.numberOfColumns];
     double yOffset[self.numberOfColumns];
@@ -51,14 +60,29 @@
     for( column = 0; column < self.numberOfColumns; column++ )
     {
         xOffset[column] = column * columnWidth;
-        yOffset[column] = 0;
+        yOffset[column] = [self getColumnBottom:xOffset[column] + self.cellPadding];
     }
     
-    
-    column = 0;
+    NSInteger minTallColumn = 0;
+    // looking for the smallest column
+    for (column = 1; column < self.numberOfColumns; column++) {
+        if (yOffset[column] < yOffset[minTallColumn]) {
+            minTallColumn = column;
+        }
+    }
+    return CGPointMake(xOffset[minTallColumn], yOffset[minTallColumn]);
+}
+- (void)prepareLayout
+{
+    [self initProps];
+   
+    //Pre-Calculates the X Offset for every column and adds an array to increment the currently max Y Offset for each column
+    CGFloat columnWidth = [self getContentWigth] / self.numberOfColumns;
+  
     
     while(self.cashe.count < self.itemProvider.count)
     {
+        CGPoint cellPosition = [self getNextItemPosition];
         size_t i = self.cashe.count;
         NSIndexPath* indexPath = [NSIndexPath indexPathForItem:i inSection:0];
         // Asks the delegate for the height of the picture and the annotation and calculates the cell frame.
@@ -70,11 +94,10 @@
        
         CGFloat height = self.cellPadding + photoHeight + self.cellPadding;
        
-        CGRect frame = CGRectMake(xOffset[column], yOffset[column],width, height);
+        CGRect frame = CGRectMake(cellPosition.x, cellPosition.y,width, height);
         CGRect insetFrame = CGRectInset(frame, self.cellPadding, self.cellPadding);
         
         // Creates an UICollectionViewLayoutItem with the frame and add it to the cache
-        
         FCPinterestLayoutAttributes* attributes = [FCPinterestLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
         
         attributes.itemHeight = photoHeight;
@@ -84,13 +107,7 @@
         
         //  Updates the collection view content height
         self.contentHeight = MAX(self.contentHeight, CGRectGetMaxY(frame));
-        
-        yOffset[column] = yOffset[column] + height;
-        
-        column = column >= (self.numberOfColumns - 1) ? 0 : ++column;
     }
-         
-    
 }
 
 - (CGSize) collectionViewContentSize
