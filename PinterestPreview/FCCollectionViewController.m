@@ -11,7 +11,7 @@
 #import "FCPinterestLayout.h"
 #import "FCImage.h"
 #import "FCItemProvider.h"
-#import "FCJSonRequest.h"
+
 #import "FCCollectionViewCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "FCCollectionViewDelegate.h"
@@ -43,7 +43,7 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
 
     self.scrollDelegate =[[FCCollectionViewDelegate alloc] initWithDataProvider:self.itemProvider];
     self.collectionView.delegate = self.scrollDelegate;
-    [self.itemProvider loadMoreItemsInTailForSelection:FEATURED_ITEMS_PATH AndNotify:self.collectionView];
+    //[self.itemProvider loadMoreItemsInTailForSelection:FEATURED_ITEMS_PATH AndNotify:self.collectionView];
 }
 
 /*

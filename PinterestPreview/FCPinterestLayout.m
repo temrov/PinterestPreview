@@ -9,9 +9,10 @@
 #import "FCPinterestLayout.h"
 #import "FCCollectionViewCell.h"
 #import "FCPinterestLayoutAttributes.h"
+#import "FCJSonRequest.h"
+
 
 @interface FCPinterestLayout()
-
 
 @end
 
@@ -78,8 +79,8 @@
    
     //Pre-Calculates the X Offset for every column and adds an array to increment the currently max Y Offset for each column
     CGFloat columnWidth = [self getContentWigth] / self.numberOfColumns;
-  
     
+    // is there any loaded objects, that are not in cashe?
     while(self.cashe.count < self.itemProvider.count)
     {
         CGPoint cellPosition = [self getNextItemPosition];
@@ -107,6 +108,10 @@
         
         //  Updates the collection view content height
         self.contentHeight = MAX(self.contentHeight, CGRectGetMaxY(frame));
+    }
+    CGPoint bottomPosition = [self getNextItemPosition];
+    if (self.collectionView.frame.origin.y + self.collectionView.frame.size.height > bottomPosition.y) {
+        [self.itemProvider loadMoreItemsInTailForSelection:FEATURED_ITEMS_PATH AndNotify:self.collectionView];
     }
 }
 
