@@ -68,17 +68,20 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     FCCollectionViewCell *cell = (FCCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     
     // Configure the cell
     UIImageView *recipeImageView = cell.imageView;
+    if (recipeImageView.image != nil) {
+        // already cashed
+        return cell;
+    }
     FCVisualItem* viewingElement = [self.itemProvider getByIndex:indexPath.row];
     NSURL* url = [[NSURL alloc] initWithString:viewingElement.url];
-    
     NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
     recipeImageView.image = [[UIImage alloc] initWithData:imageData];
-    
     return cell;
 }
 
