@@ -14,7 +14,7 @@
 
 @property (assign, nonatomic) id<FCPinterestLayoutDelegate> layoutDelegate;
 @property (weak, nonatomic) FCItemProvider* itemProvider;
-- (id) init;
+
 
 // Configurable properties
 @property(nonatomic) NSInteger numberOfColumns;

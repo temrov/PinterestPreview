@@ -9,6 +9,7 @@
 #import "FCJSonRequest.h"
 #import "FCImage.h"
 #import "FCItemSize.h"
+#import "FCVisualItemBundle.h"
 
 
 NSString* FEATURED_ITEMS_PATH = @"/ifunny/v1/feeds/featured";
@@ -25,32 +26,37 @@ NSString* POPULAR_ITEMS_PATH = @"/ifunny/v1/feeds/popular";
     RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
     
     
-    RKMapping* pictureMapping = [FCImageMapping get];
+    RKMapping* pictureMapping = [FCVisualItemBundleMapping get];
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptorFeatured =
     [RKResponseDescriptor responseDescriptorWithMapping:pictureMapping
                                                  method:RKRequestMethodGET
                                             pathPattern:FEATURED_ITEMS_PATH
-                                                keyPath:@"content.items"
+                                                keyPath:@"content"
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:responseDescriptorFeatured];
     RKResponseDescriptor *responseDescriptorPopular =
     [RKResponseDescriptor responseDescriptorWithMapping:pictureMapping
                                                  method:RKRequestMethodGET
                                             pathPattern:POPULAR_ITEMS_PATH
-                                                keyPath:@"content.items"
+                                                keyPath:@"content"
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:responseDescriptorPopular];
     
     
-    
+
 }
 -(void)loadItemsAtPath : (NSString*)path
+             Parameters: (NSString*)param
               OnSuccess: (void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))successHandler
               OnFailure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failureHanlder
 {
+    NSDictionary* paramDictionary;// = @{param : @""};
+    if (param) {
+        paramDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:param, @"next", nil];
+    }
     [[RKObjectManager sharedManager] getObjectsAtPath:path
-                                           parameters:nil
+                                           parameters:paramDictionary
                                               success:successHandler
                                               failure:failureHanlder];
 }

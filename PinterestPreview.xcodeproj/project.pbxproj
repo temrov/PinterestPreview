@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B8B95DF6E4E84F91ECD4F51 /* libPods-PinterestPreview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34242286D99AE07C46016FA7 /* libPods-PinterestPreview.a */; };
+		59A5F43E1D93CC90000F4E09 /* FCVisualItemBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A5F43D1D93CC90000F4E09 /* FCVisualItemBundle.m */; };
+		59A5F4441D93CD44000F4E09 /* FCBundlePaging.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A5F4431D93CD44000F4E09 /* FCBundlePaging.m */; };
 		59A6C4D91D8E4AD20085CF61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C4D81D8E4AD20085CF61 /* main.m */; };
 		59A6C4DC1D8E4AD20085CF61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6C4DB1D8E4AD20085CF61 /* AppDelegate.m */; };
 		59A6C4E21D8E4AD20085CF61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A6C4E01D8E4AD20085CF61 /* Main.storyboard */; };
@@ -27,6 +29,10 @@
 
 /* Begin PBXFileReference section */
 		34242286D99AE07C46016FA7 /* libPods-PinterestPreview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinterestPreview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59A5F43C1D93CC90000F4E09 /* FCVisualItemBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCVisualItemBundle.h; sourceTree = "<group>"; };
+		59A5F43D1D93CC90000F4E09 /* FCVisualItemBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCVisualItemBundle.m; sourceTree = "<group>"; };
+		59A5F4421D93CD44000F4E09 /* FCBundlePaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCBundlePaging.h; sourceTree = "<group>"; };
+		59A5F4431D93CD44000F4E09 /* FCBundlePaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCBundlePaging.m; sourceTree = "<group>"; };
 		59A6C4D41D8E4AD20085CF61 /* PinterestPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinterestPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A6C4D81D8E4AD20085CF61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		59A6C4DA1D8E4AD20085CF61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -161,6 +167,10 @@
 				59D2A2A41D918D6D002CECBC /* FCItemSize.m */,
 				59D2A2AA1D92F836002CECBC /* FCItemProvider.h */,
 				59D2A2AB1D9300E4002CECBC /* FCItemProvider.m */,
+				59A5F43C1D93CC90000F4E09 /* FCVisualItemBundle.h */,
+				59A5F43D1D93CC90000F4E09 /* FCVisualItemBundle.m */,
+				59A5F4421D93CD44000F4E09 /* FCBundlePaging.h */,
+				59A5F4431D93CD44000F4E09 /* FCBundlePaging.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -311,8 +321,10 @@
 				59A6C4D91D8E4AD20085CF61 /* main.m in Sources */,
 				59D2A2A81D92E5B2002CECBC /* FCCollectionViewDelegate.m in Sources */,
 				59A6C4F51D8E600E0085CF61 /* FCPinterestLayout.m in Sources */,
+				59A5F4441D93CD44000F4E09 /* FCBundlePaging.m in Sources */,
 				59A6C5031D8F07490085CF61 /* FCImage.m in Sources */,
 				59A6C5071D8F075F0085CF61 /* FCVisualItem.m in Sources */,
+				59A5F43E1D93CC90000F4E09 /* FCVisualItemBundle.m in Sources */,
 				59A6C5041D8F07490085CF61 /* FCJSonRequest.m in Sources */,
 				59A6C4F91D8E66EE0085CF61 /* FCPinterestLayoutAttributes.m in Sources */,
 			);

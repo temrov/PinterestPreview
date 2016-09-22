@@ -17,7 +17,8 @@ extern NSString* POPULAR_ITEMS_PATH;
 
 
 -(void)configure;
--(void)loadItemsAtPath : (NSString*)path
+-(void)loadItemsAtPath: (NSString*)path
+             Parameters: (NSString*)param
               OnSuccess: (void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))successHandler
               OnFailure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failureHanlder;
 

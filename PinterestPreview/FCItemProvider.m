@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FCItemProvider.h"
 #import "FCJSonRequest.h"
-
+#import "FCVisualItemBundle.h"
 
 @interface FCItemProvider()
 
@@ -35,8 +35,11 @@
     [req configure];
     //RecipeCollectionViewController* weakSelf = self;
     [req loadItemsAtPath:selectionPath
+              Parameters:self.tailCursor
                OnSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                   [self.items addObjectsFromArray:mappingResult.array];
+                   FCVisualItemBundle* res = mappingResult.dictionary[@"content"];
+                   [self.items addObjectsFromArray:res.items];
+                   self.tailCursor = res.paging.cursors.next;
                    [collectionView reloadData];
                }
                OnFailure:^(RKObjectRequestOperation *operation, NSError *error) {

@@ -30,7 +30,7 @@
 {
     if (decelerate) {
         UICollectionView* collectionView = (UICollectionView*)scrollView;
-        [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:collectionView];
+        [self.itemProvider loadMoreItemsInTailForSelection:FEATURED_ITEMS_PATH AndNotify:collectionView];
     }
 }
 @end
