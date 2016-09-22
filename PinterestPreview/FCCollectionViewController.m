@@ -74,10 +74,6 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
     
     // Configure the cell
     UIImageView *recipeImageView = cell.imageView;
-    if (recipeImageView.image != nil) {
-        // already cashed
-        return cell;
-    }
     FCVisualItem* viewingElement = [self.itemProvider getByIndex:indexPath.row];
     NSURL* url = [[NSURL alloc] initWithString:viewingElement.url];
     NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
