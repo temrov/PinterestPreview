@@ -21,6 +21,5 @@
 @property (strong, nonatomic) FCItemSize* size;
 @property (strong, nonatomic) NSString* type;
 
-@property (strong, nonatomic) UIImage* content;
 @end
 
