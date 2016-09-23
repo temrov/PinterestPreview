@@ -15,6 +15,7 @@
 #import "FCCollectionViewCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "FCCollectionViewDelegate.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface FCCollectionViewController ()
 @property (nonatomic) FCItemProvider *itemProvider;
@@ -75,9 +76,8 @@ static NSString * const reuseIdentifier = @"FCCollectionViewCell";
     // Configure the cell
     UIImageView *recipeImageView = cell.imageView;
     FCVisualItem* viewingElement = [self.itemProvider getByIndex:indexPath.row];
-    NSURL* url = [[NSURL alloc] initWithString:viewingElement.url];
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
-    recipeImageView.image = [[UIImage alloc] initWithData:imageData];
+    recipeImageView.image = viewingElement.content;
+
     return cell;
 }
 

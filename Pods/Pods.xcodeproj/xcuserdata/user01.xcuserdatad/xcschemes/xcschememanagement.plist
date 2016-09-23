@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SOCKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,22 +47,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3074978CF9EEFC0E7E64ECCF7498787B</key>
+		<key>1FD459C458BBFC9199AE8FE3488CC0EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>31B005EA4B42794D4B79074D36628A74</key>
+		<key>59DA20FEFB26E845D18E852D1A1B92B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49D4C15CF0CD44AA22433BCA38AFDAB7</key>
+		<key>79390C1739324CDFBCCB2AFD5739307D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EE34CC9C0BCC4424A29262D82E3B6CC</key>
+		<key>92F70D9CEEE3D8AACEEACFED759F485E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFB184FC7CD674429ECE779BEB039E68</key>
 		<dict>
 			<key>primary</key>
 			<true/>

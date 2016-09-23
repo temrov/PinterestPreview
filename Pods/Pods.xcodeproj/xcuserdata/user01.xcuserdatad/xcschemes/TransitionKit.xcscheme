@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9EE34CC9C0BCC4424A29262D82E3B6CC'
+               BlueprintIdentifier = '1FD459C458BBFC9199AE8FE3488CC0EC'
                BlueprintName = 'TransitionKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libTransitionKit.a'>

@@ -38,7 +38,14 @@
               Parameters:self.tailCursor
                OnSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                    FCVisualItemBundle* res = mappingResult.dictionary[@"content"];
-                   [self.items addObjectsFromArray:res.items];
+                   //self.items addObjectsFromArray:res.items];
+                   for (FCVisualItem* visualItem in res.items)
+                   {
+                       NSURL* url = [[NSURL alloc] initWithString:visualItem.url];
+                       NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
+                       visualItem.content =  [[UIImage alloc] initWithData:imageData];
+                       [self.items addObject:visualItem];
+                   }
                    self.tailCursor = res.paging.cursors.next;
                    [collectionView reloadData];
                }

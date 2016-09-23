@@ -3,5 +3,5 @@
 
 target 'PinterestPreview' do
   pod 'RestKit'
-
+  pod 'SDWebImage'
 end
