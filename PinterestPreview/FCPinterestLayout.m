@@ -113,7 +113,20 @@
 
     if (self.collectionView.frame.origin.y + self.collectionView.frame.size.height > bottomPosition.y) {
         [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
+    } else {
+        CGRect viewBounds = self.collectionView.bounds;
+        CGFloat delta = 200;
+        
+        CGPoint bottomPosition = [self getNextItemPosition];
+        CGPoint targetContentOffset = self.collectionView.contentOffset;
+        if (bottomPosition.y - targetContentOffset.y < viewBounds.size.height + delta )
+        {
+            [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
+        }
     }
+    
+
+    
 }
 
 - (CGSize) collectionViewContentSize
