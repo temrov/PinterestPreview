@@ -8,6 +8,7 @@
 
 #import "FCCollectionViewDelegate.h"
 #import "FCJSonRequest.h"
+#import "FCPinterestLayout.h"
 
 
 @interface FCCollectionViewDelegate()
@@ -29,13 +30,18 @@
                      withVelocity:(CGPoint)velocity
               targetContentOffset:(inout CGPoint *)targetContentOffset
 {
-    CGSize contentSize = scrollView.contentSize;
     
     CGRect viewBounds = scrollView.bounds;
-    CGFloat delta = 200;
-    if (contentSize.height - viewBounds.origin.y < viewBounds.size.height + delta) {
-        UICollectionView* collectionView = (UICollectionView*)scrollView;
-        [self.itemProvider loadMoreItemsInTailForSelection:FEATURED_ITEMS_PATH AndNotify:collectionView];
+    CGFloat delta = 50;
+
+    UICollectionView* collectionView = (UICollectionView*)scrollView;
+    
+    FCPinterestLayout* layout = (FCPinterestLayout*)collectionView.collectionViewLayout;
+    CGPoint bottomPosition = [layout getNextItemPosition];
+
+    if (bottomPosition.y - targetContentOffset->y < viewBounds.size.height + delta )
+    {
+        [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:collectionView];
     }
 }
 @end

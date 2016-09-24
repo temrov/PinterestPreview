@@ -127,8 +127,6 @@
 			children = (
 				59A6C4EF1D8E4C5D0085CF61 /* FCCollectionViewController.h */,
 				59A6C4F01D8E4C5D0085CF61 /* FCCollectionViewController.m */,
-				59D2A2A61D92E5B2002CECBC /* FCCollectionViewDelegate.h */,
-				59D2A2A71D92E5B2002CECBC /* FCCollectionViewDelegate.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -136,6 +134,8 @@
 		59A6C4F21D8E5FC70085CF61 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				59D2A2A61D92E5B2002CECBC /* FCCollectionViewDelegate.h */,
+				59D2A2A71D92E5B2002CECBC /* FCCollectionViewDelegate.m */,
 				59A6C4F31D8E600E0085CF61 /* FCPinterestLayout.h */,
 				59A6C4F41D8E600E0085CF61 /* FCPinterestLayout.m */,
 				59A6C4F61D8E608C0085CF61 /* FCPinterestLayoutDelegate.h */,

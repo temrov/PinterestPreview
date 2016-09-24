@@ -26,4 +26,5 @@
 
 - (CGFloat)getContentWigth;
 - (void)prepareLayout;
+- (CGPoint)getNextItemPosition;
 @end
