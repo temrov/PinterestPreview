@@ -25,10 +25,15 @@
     return self;
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
-                  willDecelerate:(BOOL)decelerate
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
+                     withVelocity:(CGPoint)velocity
+              targetContentOffset:(inout CGPoint *)targetContentOffset
 {
-    if (decelerate) {
+    CGSize contentSize = scrollView.contentSize;
+    
+    CGRect viewBounds = scrollView.bounds;
+    CGFloat delta = 200;
+    if (contentSize.height - viewBounds.origin.y < viewBounds.size.height + delta) {
         UICollectionView* collectionView = (UICollectionView*)scrollView;
         [self.itemProvider loadMoreItemsInTailForSelection:FEATURED_ITEMS_PATH AndNotify:collectionView];
     }
