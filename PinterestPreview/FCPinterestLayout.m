@@ -110,24 +110,10 @@
         self.contentHeight = MAX(self.contentHeight, CGRectGetMaxY(frame));
     }
     CGPoint bottomPosition = [self getNextItemPosition];
-    
-    CGRect viewBounds = self.collectionView.bounds;
-    CGSize contentSize = self.collectionView.contentSize;
-    CGFloat delta = 300;
+
     if (self.collectionView.frame.origin.y + self.collectionView.frame.size.height > bottomPosition.y) {
         [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
-        
     }
-    /*
-     else if (bottomPosition.y - viewBounds.origin.y < viewBounds.size.height + delta )
-     {
-         
-         [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
-     }
-    */
-    
- 
-    
 }
 
 - (CGSize) collectionViewContentSize
