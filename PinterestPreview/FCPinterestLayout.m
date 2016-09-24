@@ -28,7 +28,7 @@
 {
     static BOOL firstCall = TRUE;
     if (firstCall) {
-        self.numberOfColumns = 3;
+        self.numberOfColumns = 4;
         self.cellPadding = 2;
         self.cashe = [[NSMutableArray alloc] initWithCapacity:300];
         firstCall = FALSE;
@@ -115,14 +115,18 @@
         [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
     } else {
         CGRect viewBounds = self.collectionView.bounds;
-        CGFloat delta = 200;
+        CGFloat delta = 100;
         
         CGPoint bottomPosition = [self getNextItemPosition];
         CGPoint targetContentOffset = self.collectionView.contentOffset;
-        if (bottomPosition.y - targetContentOffset.y < viewBounds.size.height + delta )
-        {
-            [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
+        if (targetContentOffset.y > 0) {
+            if (bottomPosition.y - targetContentOffset.y < viewBounds.size.height + delta )
+            {
+                // screen is not fullfilled
+                [self.itemProvider loadMoreItemsInTailForSelection:POPULAR_ITEMS_PATH AndNotify:self.collectionView];
+            }
         }
+        
     }
     
 
